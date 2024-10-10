@@ -38,4 +38,8 @@ public class ShapeCollector {
 
     }
 
+    public int getCountFigures() {
+        return shapes.size();
+    }
+
 }

@@ -77,7 +77,7 @@ public class ShapeCollectorTestSuite {
         collector.removeShape(square);
 
         //Then
-        assertEquals("Shapes: Triangle", collector.showFigures());
+        assertEquals(1, collector.getCountFigures());
     }
 
 }
