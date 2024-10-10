@@ -34,12 +34,7 @@ public class WeatherForecast {
 
     public double calculateMedianTemperature() {
 
-        List<Double> sorted = temperatures.getTemperatures().values().stream().sorted(new Comparator<Double>() {
-            @Override
-            public int compare(Double o1, Double o2) {
-                return o1.compareTo(o2);
-            }
-        }).toList();
+        List<Double> sorted = temperatures.getTemperatures().values().stream().sorted((o1, o2) -> o1.compareTo(o2)).toList();
 
         if (sorted.size() % 2 == 0) {
             double median1 = sorted.get(sorted.size() / 2 - 1);
