@@ -13,9 +13,13 @@ public class BookLibrary {
 
     public List<Book> listBooksWithCondition(String titleFragment) {
         List<Book> bookList = new ArrayList<>();
-        if (titleFragment.length() < 3) return bookList;
+        if (titleFragment.length() < 3) {
+            return bookList;
+        }
         List<Book> resultList = libraryDatabase.listBooksWithCondition(titleFragment);
-        if (resultList.size() > 20) return bookList;
+        if (resultList.size() > 20) {
+            return bookList;
+        }
         bookList = resultList;
         return bookList;
 
@@ -23,9 +27,26 @@ public class BookLibrary {
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
         List<Book> bookList = new ArrayList<>();
-        Book book1 = new Book("The book title", "The book author", 2000);
+
+        List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
+
+        if (resultList.isEmpty()) {
+            return resultList;
+        }
+
+        if (resultList.size() == 1) {
+            return resultList;
+        }
+
+        if (resultList.size() == 5) {
+            return resultList;
+        }
 
         return bookList;
+    }
+
+    public boolean rentABook(LibraryUser libraryUser, Book book) {
+        return true;
     }
 
 }

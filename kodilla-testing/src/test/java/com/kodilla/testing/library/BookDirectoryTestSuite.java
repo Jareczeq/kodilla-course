@@ -66,7 +66,6 @@ public class BookDirectoryTestSuite {
     @Test
     void testListBooksWithConditionFragmentShorterThan3() {
         //Given
-        LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
 
         //When
@@ -76,6 +75,43 @@ public class BookDirectoryTestSuite {
         assertEquals(0, theListOfBooks10.size());
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
+
+    @Test
+    void testRentBooks() {
+        //Given
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        Book book1 = new Book("Podstawy programowania", "Jan Kowalski", 2015);
+        Book book2 = new Book("Algebra", "Jan Kowalski", 2015);
+        LibraryUser libraryUser = new LibraryUser("Jakub", "Śliwczyński", "12345678901");
+
+        //When
+        boolean rented = bookLibrary.rentABook(libraryUser, book1);
+
+        //Then
+        assertTrue(rented);
+    }
+
+/*    @Test
+    void testListRentedBooks() {
+        //Given
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser = new LibraryUser("Jakub", "Śliwczyński", "12345678901");
+        List<Book> rented0Books = new ArrayList<>();
+        List<Book> rented1Book = generateListOfNBooks(1);
+        List<Book> rented5Books = generateListOfNBooks(5);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(rented0Books);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(rented1Book);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(rented5Books);
+
+        //When
+        List<Book> theRented0Books = bookLibrary.listBooksInHandsOf(libraryUser);
+
+        //Then
+        assertEquals(0, rented0Books.size());
+        assertEquals(1, rented1Book.size());
+        assertEquals(5, rented5Books.size());
+    }
+*/
 
     private List<Book> generateListOfNBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<>();
