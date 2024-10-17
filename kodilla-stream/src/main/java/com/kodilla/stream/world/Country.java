@@ -2,11 +2,6 @@ package com.kodilla.stream.world;
 
 import java.math.BigDecimal;
 
-public class Country {
-
-
-    public BigDecimal getPeopleQuantity() {
-        return null;
-    }
+public record Country(String name, BigDecimal population) {
 
 }

@@ -1,9 +1,7 @@
 package com.kodilla.stream.world;
 
-import java.util.Collection;
+import java.util.List;
 
-public class Continent {
-
-    private Collection<Country> countries;
+public record Continent(String name, List<Country> countries) {
 
 }
