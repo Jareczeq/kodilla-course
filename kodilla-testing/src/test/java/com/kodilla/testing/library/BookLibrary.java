@@ -26,23 +26,7 @@ public class BookLibrary {
     }
 
     public List<Book> listBooksInHandsOf(LibraryUser libraryUser) {
-        List<Book> bookList = new ArrayList<>();
-
-        List<Book> resultList = libraryDatabase.listBooksInHandsOf(libraryUser);
-
-        if (resultList.isEmpty()) {
-            return resultList;
-        }
-
-        if (resultList.size() == 1) {
-            return resultList;
-        }
-
-        if (resultList.size() == 5) {
-            return resultList;
-        }
-
-        return bookList;
+        return libraryDatabase.listBooksInHandsOf(libraryUser);
     }
 
     public boolean rentABook(LibraryUser libraryUser, Book book) {
