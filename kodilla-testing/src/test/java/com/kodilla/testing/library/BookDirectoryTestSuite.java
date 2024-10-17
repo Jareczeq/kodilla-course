@@ -122,7 +122,7 @@ public class BookDirectoryTestSuite {
 
         //Then
         assertEquals(5, rentedBooks.size());
-        assertEquals(List.of(book1), rentedBooks);
+        assertEquals(List.of(book1, book2, book3, book4, book5), rentedBooks);
     }
 
     private List<Book> generateListOfNBooks(int booksQuantity) {
