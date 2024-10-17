@@ -77,6 +77,55 @@ public class BookDirectoryTestSuite {
         verify(libraryDatabaseMock, times(0)).listBooksWithCondition(anyString());
     }
 
+    @Test
+    void testNoRentedBooks() {
+        //Given
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser1 = new LibraryUser("Jakub", "Śliwczyński", "01234567890");
+
+        //When
+        var rentedBooks = bookLibrary.listBooksInHandsOf(libraryUser1);
+
+        //Then
+        assertEquals(0, rentedBooks.size());
+    }
+
+    @Test
+    void testRentedABook() {
+        //Given
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser1 = new LibraryUser("Jakub", "Śliwczyński", "01234567890");
+        Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1)).thenReturn(List.of(book1));
+
+        //When
+        var rentedBooks = bookLibrary.listBooksInHandsOf(libraryUser1);
+
+        //Then
+        assertEquals(1, rentedBooks.size());
+        assertEquals(List.of(book1), rentedBooks);
+    }
+
+    @Test
+    void testRentedFiveBooks() {
+        //Given
+        BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
+        LibraryUser libraryUser1 = new LibraryUser("Jakub", "Śliwczyński", "01234567890");
+        Book book1 = new Book("Secrets of Alamo", "John Smith", 2008);
+        Book book2 = new Book("Secrets of Alamo", "John Smith", 2008);
+        Book book3 = new Book("Secrets of Alamo", "John Smith", 2008);
+        Book book4 = new Book("Secrets of Alamo", "John Smith", 2008);
+        Book book5 = new Book("Secrets of Alamo", "John Smith", 2008);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser1)).thenReturn(List.of(book1, book2, book3, book4, book5));
+
+        //When
+        var rentedBooks = bookLibrary.listBooksInHandsOf(libraryUser1);
+
+        //Then
+        assertEquals(5, rentedBooks.size());
+        assertEquals(List.of(book1), rentedBooks);
+    }
+
     private List<Book> generateListOfNBooks(int booksQuantity) {
         List<Book> resultList = new ArrayList<>();
         for (int n = 1; n <= booksQuantity; n++) {
