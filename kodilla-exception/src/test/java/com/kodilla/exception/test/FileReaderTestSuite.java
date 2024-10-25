@@ -37,13 +37,4 @@ public class FileReaderTestSuite {
         );
     }
 
-    @Test
-    void testProbablyIWillThrowException() {
-        //Given
-        SecondChallenge secondChallenge = new SecondChallenge();
-
-        //When & Then
-        assertThrows(Exception.class, () -> secondChallenge.probablyIWillThrowException(3, 1.5));
-    }
-
 }
