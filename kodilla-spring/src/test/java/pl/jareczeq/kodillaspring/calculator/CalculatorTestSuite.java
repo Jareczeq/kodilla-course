@@ -13,21 +13,51 @@ public class CalculatorTestSuite {
     private Display display;
 
     @Test
-    void testCalculations() {
+    void testCalculatorAdd() {
         //Given
         Calculator calculator = new Calculator(display);
 
         //When
-        double result1 = calculator.add(15, 20);
-        double result2 = calculator.sub(10, 5);
-        double result3 = calculator.mul(10, 10);
-        double result4 = calculator.div(20, 5);
+        double result = calculator.add(15, 20);
 
         //Then
-        assertEquals(35, result1);
-        assertEquals(5, result2);
-        assertEquals(100, result3);
-        assertEquals(4, result4);
+        assertEquals(35, result);
+    }
+
+    @Test
+    void testCalculatorSub() {
+        //Given
+        Calculator calculator = new Calculator(display);
+
+        //When
+        double result = calculator.sub(10, 5);
+
+        //Then
+        assertEquals(5, result);
+    }
+
+    @Test
+    void testCalculatorMul() {
+        //Given
+        Calculator calculator = new Calculator(display);
+
+        //When
+        double result = calculator.mul(10, 10);
+
+        //Then
+        assertEquals(100, result);
+    }
+
+    @Test
+    void testCalculatorDiv() {
+        //Given
+        Calculator calculator = new Calculator(display);
+
+        //When
+        double result = calculator.div(20, 5);
+
+        //Then
+        assertEquals(4, result);
     }
 
 }
