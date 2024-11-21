@@ -5,12 +5,10 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Scope("singleton")
-public class Circle implements Shape {
+public class Square implements Shape {
 
     @Override
-    public String  draw() {
-        System.out.println("This is a circle");
-        return "This is a circle";
+    public String draw() {
+        return "This is a square";
     }
-
 }

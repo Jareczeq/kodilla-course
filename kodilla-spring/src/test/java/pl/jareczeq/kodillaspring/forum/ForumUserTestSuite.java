@@ -1,8 +1,6 @@
-package pl.jareczeq.kodillaspring;
+package pl.jareczeq.kodillaspring.forum;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
-import pl.jareczeq.kodillaspring.forum.ForumUser;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
