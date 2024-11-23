@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class KodillaSpringApplication {
 
     public static void main(String[] args) {
-        System.out.println("Welcome into the intro to spring");
-        //SpringApplication.run(KodillaSpringApplication.class, args);
+        SpringApplication.run(KodillaSpringApplication.class, args);
     }
 
 }
