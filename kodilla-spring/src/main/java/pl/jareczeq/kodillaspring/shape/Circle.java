@@ -1,5 +1,9 @@
 package pl.jareczeq.kodillaspring.shape;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
 public class Circle implements Shape {
 
     @Override
