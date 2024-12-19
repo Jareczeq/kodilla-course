@@ -6,13 +6,19 @@ import org.springframework.boot.test.context.SpringBootTest;
 import pl.jareczeq.kodillahibernate.manytomany.Company;
 import pl.jareczeq.kodillahibernate.manytomany.Employee;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 public class CompanyDaoTestSuite {
 
     @Autowired
     private CompanyDao companyDao;
+
+    @Autowired
+    private EmployeeDao employeeDao;
 
     @Test
     void testSaveManyToMany() {
@@ -49,6 +55,30 @@ public class CompanyDaoTestSuite {
         assertNotEquals(0, softwareMachineId);
         assertNotEquals(0, dataMaestersId);
         assertNotEquals(0, greyMatterId);
+    }
+
+    @Test
+    void findEmployeesByLastName() {
+        //Given
+        List<Employee> employees = employeeDao.findByLastName("Smith");
+
+        //When
+        int employeeCount = employees.size();
+
+        //Then
+        assertEquals(1, employeeCount);
+    }
+
+    @Test
+    void testFindCompaniesByThreeLettersOfName() {
+        //Given
+        List<Company> companies = companyDao.findByThreeLettersOfName("Sof");
+
+        //When
+        int count = companies.size();
+
+        //Then
+        assertEquals(1, count);
     }
 
 }
